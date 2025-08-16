@@ -3,7 +3,7 @@
 import threading
 import time
 
-NUM_VALUES = 100_000  # keep this reasonable to avoid killing your Mac
+NUM_VALUES = 50_000  # keep this reasonable to avoid killing your Mac
 
 # --------------------
 # Thread-safe version

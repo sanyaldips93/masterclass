@@ -7,7 +7,7 @@ from queue import Queue
 DB_CONFIG = {
     "host": "localhost",
     "user": "root",
-    "password": "pass@123",  # Change this!
+    "password": "",
     "database": "local"
 }
 
