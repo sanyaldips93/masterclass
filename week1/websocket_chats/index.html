@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Minimal WS Chat</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 16px; }
+    #log { border: 1px solid #ccc; height: 50vh; overflow: auto; padding: 8px; }
+    #controls { display: flex; gap: 8px; margin: 8px 0; }
+    input, button { padding: 8px; }
+    #name { width: 14rem; }
+    #msg { flex: 1; }
+    .sys { color: #555; }
+    .mine { font-weight: 600; }
+  </style>
+</head>
+<body>
+  <h1>Minimal WebSocket Chat (Ephemeral)</h1>
+  <div id="controls">
+    <input id="name" placeholder="Your name" />
+    <button id="connect">Connect</button>
+    <button id="disconnect" disabled>Disconnect</button>
+  </div>
+  <div id="log" aria-live="polite"></div>
+  <div id="sendbar">
+    <input id="msg" placeholder="Type message..." disabled />
+    <button id="send" disabled>Send</button>
+  </div>
+
+  <script>
+  let ws = null;
+  let myName = "";
+
+  function logLine(html, cls="") {
+    const div = document.getElementById("log");
+    const p = document.createElement("div");
+    if (cls) p.className = cls;
+    p.innerHTML = html;
+    div.appendChild(p);
+    div.scrollTop = div.scrollHeight;
+  }
+
+  function setConnected(connected) {
+    document.getElementById("connect").disabled = connected;
+    document.getElementById("disconnect").disabled = !connected;
+    document.getElementById("msg").disabled = !connected;
+    document.getElementById("send").disabled = !connected;
+    document.getElementById("name").disabled = connected;
+  }
+
+  document.getElementById("connect").onclick = () => {
+    const name = document.getElementById("name").value.trim();
+    if (!name) { alert("Enter a name"); return; }
+    myName = name;
+    const proto = location.protocol === "https:" ? "wss" : "ws";
+    const url = proto + "://" + location.hostname + ":8765";
+    ws = new WebSocket(url);
+
+    ws.onopen = () => {
+      ws.send(JSON.stringify({type:"join", name: myName}));
+      setConnected(true);
+      logLine(`Connected as <b>${myName}</b>.`, "sys");
+    };
+    ws.onmessage = (ev) => {
+      try {
+        const d = JSON.parse(ev.data);
+        if (d.type === "system") {
+          logLine(d.text, "sys");
+        } else if (d.type === "msg") {
+          const cls = d.from === myName ? "mine" : "";
+          logLine(`<b>${d.from}:</b> ${d.text}`, cls);
+        }
+      } catch {}
+    };
+    ws.onclose = () => {
+      setConnected(false);
+      logLine("Disconnected.", "sys");
+    };
+  };
+
+  document.getElementById("disconnect").onclick = () => {
+    if (ws) ws.close();
+  };
+
+  document.getElementById("send").onclick = () => {
+    const box = document.getElementById("msg");
+    const text = box.value.trim();
+    if (!text) return;
+    ws?.send(JSON.stringify({type:"msg", text}));
+    box.value = "";
+    box.focus();
+  };
+
+  document.getElementById("msg").addEventListener("keydown", (e) => {
+    if (e.key === "Enter") document.getElementById("send").click();
+  });
+  </script>
+</body>
+</html>
