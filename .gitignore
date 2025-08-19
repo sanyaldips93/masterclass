@@ -4,3 +4,4 @@ package-lock.json
 **/package-lock.json
 venv/
 **/venv/
+**/node_modules/
