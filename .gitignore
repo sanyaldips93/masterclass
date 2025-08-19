@@ -1,2 +1,6 @@
 .venv
 *.db
+package-lock.json
+**/package-lock.json
+venv/
+**/venv/

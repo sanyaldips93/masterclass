@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>SSE Deployment Log</title>
+    <style>
+      /* Simple styling: black background, green terminal-like text */
+      body { font-family: monospace; background: #111; color: #0f0; padding: 20px; }
+      #log { white-space: pre-line; margin-top: 10px; }
+      button { padding: 8px 12px; margin-bottom: 10px; cursor: pointer; }
+    </style>
+  </head>
+  <body>
+    <h2>Deployment Log</h2>
+    <!-- Button to start deployment -->
+    <button id="deployBtn">Start Deployment</button>
+
+    <!-- Where logs will appear -->
+    <div id="log"></div>
+
+    <script>
+      // Reference to the log container
+      const logDiv = document.getElementById("log");
+
+      // Open a persistent connection to /events (SSE)
+      const evtSource = new EventSource("/events");
+
+      // When the server sends a message, display it
+      evtSource.onmessage = (e) => {
+        const line = document.createElement("div"); // Create a new line element
+        line.textContent = e.data; // Set its text content to log data
+        logDiv.prepend(line); // Add new log at the top
+      };
+
+      // When user clicks "Start Deployment", trigger backend
+      document.getElementById("deployBtn").onclick = async () => {
+        // Make request to backend to start deployment
+        await fetch("/deploy");
+      };
+    </script>
+  </body>
+</html>
