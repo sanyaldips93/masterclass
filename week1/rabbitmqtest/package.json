@@ -1,0 +1,15 @@
+{
+  "name": "node-rmq-sqlite",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "worker": "node worker.js"
+  },
+  "dependencies": {
+    "amqplib": "^0.10.3",
+    "express": "^4.19.2",
+    "sqlite3": "^5.1.7"
+  }
+}
