@@ -1,0 +1,26 @@
+2025-08-27T13:58:15.790Z | === Benchmark run: NO INDEX ===
+2025-08-27T13:58:15.958Z | Tables created
+2025-08-27T13:58:15.963Z | t_int | Running without index
+2025-08-27T13:58:18.588Z | t_int | Insert 1000000 rows | elapsed_ms=2619
+2025-08-27T13:58:18.600Z | t_int | EXPLAIN random select: [{"id":1,"select_type":"SIMPLE","table":"t_int","partitions":null,"type":"ALL","possible_keys":null,"key":null,"key_len":null,"ref":null,"rows":1000000,"filtered":10,"Extra":"Using where"}]
+2025-08-27T13:58:19.536Z | t_int | 1000 random selects | total_ms=929 | avg_ms=0.929
+2025-08-27T13:58:22.135Z | t_int | Delete all in batches of 10000 | rows=1000000 | elapsed_ms=2589
+2025-08-27T13:58:22.137Z | t_varchar | Running without index
+2025-08-27T13:58:26.637Z | t_varchar | Insert 1000000 rows | elapsed_ms=4492
+2025-08-27T13:58:26.647Z | t_varchar | EXPLAIN random select: [{"id":1,"select_type":"SIMPLE","table":"t_varchar","partitions":null,"type":"ALL","possible_keys":null,"key":null,"key_len":null,"ref":null,"rows":1000000,"filtered":10,"Extra":"Using where"}]
+2025-08-27T13:58:26.827Z | t_varchar | 1000 random selects | total_ms=174 | avg_ms=0.174
+2025-08-27T13:58:29.957Z | t_varchar | Delete all in batches of 10000 | rows=1000000 | elapsed_ms=3121
+2025-08-27T13:58:29.965Z | --------------------------------------------------------------------------------------------------------
+2025-08-27T13:58:39.068Z | === Benchmark run: WITH INDEX ===
+2025-08-27T13:58:39.103Z | Tables created
+2025-08-27T13:58:39.122Z | t_int | Index created before inserts
+2025-08-27T13:58:42.207Z | t_int | Insert 1000000 rows | elapsed_ms=3080
+2025-08-27T13:58:42.215Z | t_int | EXPLAIN random select: [{"id":1,"select_type":"SIMPLE","table":"t_int","partitions":null,"type":"ref","possible_keys":"idx_age","key":"idx_age","key_len":"5","ref":"const","rows":18266,"filtered":100,"Extra":"Using index"}]
+2025-08-27T13:58:42.407Z | t_int | 1000 random selects | total_ms=185 | avg_ms=0.185
+2025-08-27T13:58:46.730Z | t_int | Delete all in batches of 10000 | rows=1000000 | elapsed_ms=4315
+2025-08-27T13:58:46.735Z | t_varchar | Index created before inserts
+2025-08-27T13:58:52.040Z | t_varchar | Insert 1000000 rows | elapsed_ms=5301
+2025-08-27T13:58:52.049Z | t_varchar | EXPLAIN random select: [{"id":1,"select_type":"SIMPLE","table":"t_varchar","partitions":null,"type":"ref","possible_keys":"idx_age","key":"idx_age","key_len":"5","ref":"const","rows":17060,"filtered":100,"Extra":"Using index"}]
+2025-08-27T13:58:52.232Z | t_varchar | 1000 random selects | total_ms=176 | avg_ms=0.176
+2025-08-27T13:59:00.504Z | t_varchar | Delete all in batches of 10000 | rows=1000000 | elapsed_ms=8260
+2025-08-27T13:59:00.505Z | --------------------------------------------------------------------------------------------------------
