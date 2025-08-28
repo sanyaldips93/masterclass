@@ -1,0 +1,57 @@
+=== Benchmark run started ===
+2025-08-28T08:08:43.209Z | === Benchmark run: ON DUPLICATE KEY UPDATE (no index) ===
+2025-08-28T08:08:43.652Z | t_ondku | Initial insert 100000 rows | elapsed_ms=441.611
+2025-08-28T08:08:43.920Z | t_ondku | Collision update 100000 rows | elapsed_ms=267.129042
+2025-08-28T08:08:43.920Z | === Benchmark run: REPLACE INTO (no index) ===
+2025-08-28T08:08:44.278Z | t_replace | Initial insert 100000 rows | elapsed_ms=354.081542
+2025-08-28T08:08:44.599Z | t_replace | Collision replace 100000 rows | elapsed_ms=321.247
+2025-08-28T08:08:44.635Z | === Benchmark run: ON DUPLICATE KEY UPDATE (with index) ===
+2025-08-28T08:08:45.173Z | t_ondku_idx | Initial insert 100000 rows | elapsed_ms=533.802209
+2025-08-28T08:08:45.422Z | t_ondku_idx | Collision update 100000 rows | elapsed_ms=247.215875
+2025-08-28T08:08:45.428Z | === Benchmark run: REPLACE INTO (with index) ===
+2025-08-28T08:08:45.966Z | t_replace_idx | Initial insert 100000 rows | elapsed_ms=531.4065
+2025-08-28T08:08:46.304Z | t_replace_idx | Collision replace 100000 rows | elapsed_ms=332.281042
+2025-08-28T08:08:46.305Z | === Benchmark run completed ===
+2025-08-28T08:09:56.780Z | === Benchmark run started ===
+2025-08-28T08:10:13.667Z | === Benchmark run started ===
+2025-08-28T08:10:13.761Z | === Benchmark run: ON DUPLICATE KEY UPDATE (no index) ===
+2025-08-28T08:10:14.222Z | t_ondku | Initial insert 100000 rows | elapsed_ms=460.388084
+2025-08-28T08:10:14.540Z | t_ondku | Collision update 100000 rows | elapsed_ms=316.600791
+2025-08-28T08:10:14.541Z | === Benchmark run: REPLACE INTO (no index) ===
+2025-08-28T08:10:14.935Z | t_replace | Initial insert 100000 rows | elapsed_ms=392.944625
+2025-08-28T08:10:15.311Z | t_replace | Collision replace 100000 rows | elapsed_ms=374.537083
+2025-08-28T08:10:15.362Z | === Benchmark run: ON DUPLICATE KEY UPDATE (with index) ===
+2025-08-28T08:10:15.892Z | t_ondku_idx | Initial insert 100000 rows | elapsed_ms=529.598333
+2025-08-28T08:10:16.132Z | t_ondku_idx | Collision update 100000 rows | elapsed_ms=238.592916
+2025-08-28T08:10:16.349Z | === Benchmark run: REPLACE INTO (with index) ===
+2025-08-28T08:10:16.920Z | t_replace_idx | Initial insert 100000 rows | elapsed_ms=564.776917
+2025-08-28T08:10:17.257Z | t_replace_idx | Collision replace 100000 rows | elapsed_ms=335.015417
+2025-08-28T08:10:17.258Z | === Benchmark run completed ===
+2025-08-28T08:10:22.917Z | === Benchmark run started ===
+2025-08-28T08:10:22.990Z | === Benchmark run: ON DUPLICATE KEY UPDATE (no index) ===
+2025-08-28T08:10:23.429Z | t_ondku | Initial insert 100000 rows | elapsed_ms=426.882083
+2025-08-28T08:10:23.679Z | t_ondku | Collision update 100000 rows | elapsed_ms=247.838875
+2025-08-28T08:10:23.705Z | === Benchmark run: REPLACE INTO (no index) ===
+2025-08-28T08:10:24.037Z | t_replace | Initial insert 100000 rows | elapsed_ms=328.367584
+2025-08-28T08:10:24.370Z | t_replace | Collision replace 100000 rows | elapsed_ms=324.203041
+2025-08-28T08:10:24.408Z | === Benchmark run: ON DUPLICATE KEY UPDATE (with index) ===
+2025-08-28T08:10:24.915Z | t_ondku_idx | Initial insert 100000 rows | elapsed_ms=502.013375
+2025-08-28T08:10:25.161Z | t_ondku_idx | Collision update 100000 rows | elapsed_ms=244.493041
+2025-08-28T08:10:25.161Z | === Benchmark run: REPLACE INTO (with index) ===
+2025-08-28T08:10:25.727Z | t_replace_idx | Initial insert 100000 rows | elapsed_ms=558.433334
+2025-08-28T08:10:26.072Z | t_replace_idx | Collision replace 100000 rows | elapsed_ms=337.833875
+2025-08-28T08:10:26.073Z | === Benchmark run completed ===
+2025-08-28T08:11:19.694Z | === Benchmark run started ===
+2025-08-28T08:11:19.742Z | === Benchmark run: ON DUPLICATE KEY UPDATE (no index) ===
+2025-08-28T08:11:20.234Z | t_ondku | Initial insert 100000 rows | elapsed_ms=487.505916
+2025-08-28T08:11:20.491Z | t_ondku | Collision update 100000 rows | elapsed_ms=255.661083
+2025-08-28T08:11:20.496Z | === Benchmark run: REPLACE INTO (no index) ===
+2025-08-28T08:11:20.926Z | t_replace | Initial insert 100000 rows | elapsed_ms=423.186042
+2025-08-28T08:11:21.291Z | t_replace | Collision replace 100000 rows | elapsed_ms=359.140167
+2025-08-28T08:11:21.317Z | === Benchmark run: ON DUPLICATE KEY UPDATE (with index) ===
+2025-08-28T08:11:21.850Z | t_ondku_idx | Initial insert 100000 rows | elapsed_ms=525.548
+2025-08-28T08:11:22.117Z | t_ondku_idx | Collision update 100000 rows | elapsed_ms=260.061584
+2025-08-28T08:11:22.118Z | === Benchmark run: REPLACE INTO (with index) ===
+2025-08-28T08:11:22.649Z | t_replace_idx | Initial insert 100000 rows | elapsed_ms=524.953291
+2025-08-28T08:11:23.052Z | t_replace_idx | Collision replace 100000 rows | elapsed_ms=395.878
+2025-08-28T08:11:23.053Z | === Benchmark run completed ===
