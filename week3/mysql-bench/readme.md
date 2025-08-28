@@ -1,13 +1,3 @@
-# project structure
-mysql-bench/
-├─ package.json
-├─ index.js        # only 2 routes
-├─ dbOps.js        # non-index ops
-├─ indexer.js      # index ops
-├─ logger.js       # logging
-└─ benchmark_results.txt
-
-
 # mysql-bench
 1. Install
    npm install
