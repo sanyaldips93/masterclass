@@ -1,0 +1,6 @@
+Inserted 1000000 rows -> users_int: 3918 ms, users_uuid: 10601 ms
+Read 100000 random lookups: {"int_single_ms":6407,"uuid_single_ms":5732}
+Read 100000 random lookups: {"int_single_ms":5277,"uuid_single_ms":5760}
+Read 100000 random lookups: {"int_single_ms":5337,"uuid_single_ms":5705}
+Read 100000 random lookups: {"int_single_ms":5306,"uuid_single_ms":5879}
+Read 100000 random lookups: {"int_single_ms":5367,"uuid_single_ms":5687}
